@@ -36,7 +36,7 @@ const createGig = async (gig: ISellerGig): Promise<ISellerGig> => {
     const data: ISellerGig = createdGig.toJSON?.() as ISellerGig;
     await publishDirectMessage(
       gigChannel,
-      'jobber-seller-update',
+      'adwuma-seller-update',
       'user-seller',
       JSON.stringify({ type: 'update-gig-count', gigSellerId: `${data.sellerId}`, count: 1 }),
       'Details sent to users service.'
@@ -50,7 +50,7 @@ const deleteGig = async (gigId: string, sellerId: string): Promise<void> => {
   await GigModel.deleteOne({ _id: gigId }).exec();
   await publishDirectMessage(
     gigChannel,
-    'jobber-seller-update',
+    'adwuma-seller-update',
     'user-seller',
     JSON.stringify({ type: 'update-gig-count', gigSellerId: sellerId, count: -1 }),
     'Details sent to users service.'
